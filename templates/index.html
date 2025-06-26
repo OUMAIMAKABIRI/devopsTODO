@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <form method="POST">{% csrf_token %}
+        <input type="text" name="title" placeholder="Nouvelle tâche">
+        <button type="submit">Ajouter</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li{% if task.completed %} class="done"{% endif %}>{{ task.title }}</li>
+        {% endfor %}
+    </ul>
+    <script src="/static/app.js"></script>
+</body>
+</html>
